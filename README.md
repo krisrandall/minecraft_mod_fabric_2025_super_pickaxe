@@ -87,5 +87,8 @@ cp build/libs/modid-1.0.0.jar /home/{user}/.minecraft/mods
 
 This Mod was also helped by Claude AI - and if you have any issues getting it running, or have any questions - I recommend directing them to Claude (https://claude.ai) - supply it with this README information for context.
 
-Midjourney made the pickaxe, but I can no longer use Midjourney due to a [bug in Discord](https://www.reddit.com/r/discordapp/comments/oxhdsk/help_it_says_i_need_to_verify_my_account_but/). 
+Note that you can check the logs for your log messages with:
 
+```
+cat $MINECRAFT_MOD_FOLDER/../logs/latest.log | grep "Hello Fabric world"
+```

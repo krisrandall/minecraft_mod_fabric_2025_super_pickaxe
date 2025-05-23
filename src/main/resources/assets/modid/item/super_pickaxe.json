@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "modid:item/super_pickaxe"
+    "layer0": "modid:item/magic_wand"
   }
 }
