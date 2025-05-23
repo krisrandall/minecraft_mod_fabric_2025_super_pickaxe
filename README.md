@@ -17,14 +17,16 @@ A pickaxe with 100x the strength of Diamond
 * Highly enchantable
 * No repair ingredient needed
 
+Made for Minecraft 1.21.5.
+
 ----
 
 ## Installation
 
 To run this Mod you must first do the following steps :
 
-1. Install Minecraft (note the version) 
-2. Install Fabric (https://fabricmc.net/use/installer/)
+1. Install Minecraft 
+2. Install Fabric (https://fabricmc.net/use/installer/) (`java -jar fabric-installer-1.0.3.jar`)
 3. Install the Fabric API (https://www.curseforge.com/minecraft/mc-mods/fabric-api/download/6136309)
 4. Install the Mod Menu Mod (https://modrinth.com/mod/modmenu?version=1.21.4&loader=fabric)
 
@@ -32,12 +34,14 @@ To run this Mod you must first do the following steps :
 
 *Ensure Fabric version is also the same as your Minecraft version.*
 
-5. **Then Run Minecraft**
+5. **Run Minecraft**
 
 
 ## Modifying this Mod
 
 To modify this mod, first build it and install it just as it is.
+
+First you must install the Java Development Kit (JDK) (https://www.geeksforgeeks.org/download-and-install-java-development-kit-jdk-on-windows-mac-and-linux/) 
 
 These are the steps (in your terminal/console)
 
