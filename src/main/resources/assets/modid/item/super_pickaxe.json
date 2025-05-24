@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "modid:item/magic_wand"
+    "layer0": "modid:item/joschis_pickaxe"
   }
 }
