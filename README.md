@@ -1,12 +1,18 @@
-----
 
-# Work in Progress - not working yet !!!
 
-----
+# Joschi's Pickaxe
 
-# 2025 Minecraft Super Pickaxe Mod
+### 2025 Minecraft Super Pickaxe Mod
 
 <img src="src/main/resources/assets/modid/icon.png" />
+
+---
+
+### This repository is to be used with the following tutorial : https://medi-muse.medium.com/minecraft-modding-101-31747d653f00?sk=29d3f691976a481c5ad6455030f31be8
+
+Only after doing the tutorial will you have :
+
+---
 
 A pickaxe with 100x the strength of Diamond
 
