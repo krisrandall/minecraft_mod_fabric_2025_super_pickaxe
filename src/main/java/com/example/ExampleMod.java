@@ -16,8 +16,28 @@ public class ExampleMod implements ModInitializer {
     public static final String MOD_ID = "modid";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     
-    // Define your super pickaxe (matching your existing resources)
-    public static final Item SUPER_PICKAXE = register("super_pickaxe", Item::new, new Item.Settings());
+    // Custom super pickaxe class - trying to add mining speed
+    public static class SuperPickaxeItem extends Item {
+        public SuperPickaxeItem(Settings settings) {
+            super(settings);
+        }
+        
+        // Let's try the most common method name for mining speed
+        @Override
+        public float getMiningSpeed(net.minecraft.item.ItemStack stack, net.minecraft.block.BlockState state) {
+            // Check if this block can be mined with a pickaxe
+            if (state.isIn(net.minecraft.registry.tag.BlockTags.PICKAXE_MINEABLE)) {
+                return 1000.0f; // Super fast - should break instantly
+            }
+            return 1.0f; // Normal speed for other blocks
+        }
+    }
+    
+    // Now use our custom class instead of basic Item
+    public static final Item SUPER_PICKAXE = register("super_pickaxe", SuperPickaxeItem::new, 
+        new Item.Settings()
+            .maxDamage(156100) // 100x diamond durability (diamond = 1561)
+    );
 
     @Override
     public void onInitialize() {
@@ -34,7 +54,7 @@ public class ExampleMod implements ModInitializer {
         LOGGER.info("{} has been initialized!", MOD_ID);
     }
     
-    // Helper method to register items (based on Fabric docs for 1.21.5)
+    // Helper method to register items (based on your working code)
     public static Item register(String name, java.util.function.Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create the item key
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, name));
