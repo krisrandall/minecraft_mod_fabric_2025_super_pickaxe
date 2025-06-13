@@ -25,14 +25,19 @@ public class ExampleMod implements ModInitializer {
         // Let's try the most common method name for mining speed
         @Override
         public float getMiningSpeed(net.minecraft.item.ItemStack stack, net.minecraft.block.BlockState state) {
-            // Check if this block can be mined with a pickaxe
-            if (state.isIn(net.minecraft.registry.tag.BlockTags.PICKAXE_MINEABLE)) {
-                return 1000.0f; // Super fast - should break instantly
-            }
-            return 1.0f; // Normal speed for other blocks
+            return 1000.0f; // Super fast - should break instantly
         }
+
+        @Override
+        public boolean isCorrectForDrops(net.minecraft.item.ItemStack stack, net.minecraft.block.BlockState state) {
+            return true; // Can harvest ALL blocks
+        }
+
     }
     
+
+
+
     // Now use our custom class instead of basic Item
     public static final Item SUPER_PICKAXE = register("super_pickaxe", SuperPickaxeItem::new, 
         new Item.Settings()
