@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": ["XXX", " # ", " # "],
+  "key": {
+    "X": "minecraft:dirt",
+    "#": "minecraft:stick"
+  },
+  "result": {
+    "id": "modid:super_pickaxe",
+    "count": 1
+  }
+}
