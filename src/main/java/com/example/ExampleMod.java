@@ -42,14 +42,22 @@ public class ExampleMod implements ModInitializer {
         }
 
     }
-    
 
+    public static class Pearl extends Item {
+        public Pearl(Settings settings) {
+            super(settings);
+        }
+    }
 
 
     // Now use our custom class instead of basic Item
     public static final Item SUPER_PICKAXE = register("super_pickaxe", SuperPickaxeItem::new, 
         new Item.Settings()
             .maxDamage(156100) // 100x diamond durability (diamond = 1561)
+    );
+
+    public static final Item PEARL = register("pearl", Pearl::new,
+        new Item.Settings()     
     );
 
     @Override
@@ -61,6 +69,7 @@ public class ExampleMod implements ModInitializer {
         // Add the item to the creative inventory (Tools tab)
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
             content.add(SUPER_PICKAXE);
+            content.add(PEARL);
         });
         
         LOGGER.info("Super pickaxe registered!");
