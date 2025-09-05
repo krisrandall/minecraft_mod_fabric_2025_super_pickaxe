@@ -1,9 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": ["XXX", " # ", " # "],
+  "pattern": ["XCV", " # ", " # "],
   "key": {
-    "X": "minecraft:dirt",
-    "#": "minecraft:stick"
+    "X": "modid:pearl",
+    "V": "minecraft:heart_of_the_sea",
+    "C": "minecraft:netherite_pickaxe",
+    "#": "minecraft:blaze_rod"
   },
   "result": {
     "id": "modid:super_pickaxe",
