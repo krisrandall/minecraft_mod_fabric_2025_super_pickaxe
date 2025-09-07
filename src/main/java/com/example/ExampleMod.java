@@ -1,13 +1,17 @@
 package com.example;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,16 +36,28 @@ public class ExampleMod implements ModInitializer {
         public boolean isCorrectForDrops(net.minecraft.item.ItemStack stack, net.minecraft.block.BlockState state) {
             return true; // Can harvest ALL blocks
         }
+        @Override
+        public boolean canBeEnchantedWith(ItemStack stack, RegistryEntry<Enchantment> enchantment, EnchantingContext context) {
+            return true; // Can be enchanted
+        }
 
     }
-    
 
+    public static class Pearl extends Item {
+        public Pearl(Settings settings) {
+            super(settings);
+        }
+    }
 
 
     // Now use our custom class instead of basic Item
     public static final Item SUPER_PICKAXE = register("super_pickaxe", SuperPickaxeItem::new, 
         new Item.Settings()
             .maxDamage(156100) // 100x diamond durability (diamond = 1561)
+    );
+
+    public static final Item PEARL = register("pearl", Pearl::new,
+        new Item.Settings()     
     );
 
     @Override
@@ -53,6 +69,7 @@ public class ExampleMod implements ModInitializer {
         // Add the item to the creative inventory (Tools tab)
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
             content.add(SUPER_PICKAXE);
+            content.add(PEARL);
         });
         
         LOGGER.info("Super pickaxe registered!");
