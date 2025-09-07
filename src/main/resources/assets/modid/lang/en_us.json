@@ -1,4 +1,6 @@
 {
-  "item.modid.super_pickaxe": "OP Pickaxe",
-  "item.modid.pearl": "Pearl"
+  "item.modid.super_pickaxe": "Super Pickaxe",
+  "item.modid.pearl": "Pearl",
+  "block.modid.clam_shell": "Clam Shell",
+  "container.modid.clam_shell": "Clam Shell"
 }

@@ -1,0 +1,37 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "modid:block/clam_shell_side",
+    "top": "modid:block/clam_shell_top",
+    "bottom": "modid:block/clam_shell_bottom",
+    "side": "modid:block/clam_shell_side"
+  },
+  "elements": [
+    {
+      "comment": "Bottom shell",
+      "from": [2, 0, 2],
+      "to": [14, 4, 14],
+      "faces": {
+        "down": { "texture": "#bottom", "cullface": "down" },
+        "up": { "texture": "#bottom" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "west": { "texture": "#side" },
+        "east": { "texture": "#side" }
+      }
+    },
+    {
+      "comment": "Top shell (closed)",
+      "from": [2, 4, 2],
+      "to": [14, 8, 14],
+      "faces": {
+        "down": { "texture": "#top" },
+        "up": { "texture": "#top" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "west": { "texture": "#side" },
+        "east": { "texture": "#side" }
+      }
+    }
+  ]
+}

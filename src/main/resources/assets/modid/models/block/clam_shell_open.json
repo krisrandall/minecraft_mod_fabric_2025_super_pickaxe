@@ -1,0 +1,53 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "modid:block/clam_shell_side",
+    "top": "modid:block/clam_shell_top",
+    "bottom": "modid:block/clam_shell_bottom",
+    "side": "modid:block/clam_shell_side",
+    "inside": "modid:block/clam_shell_inside",
+    "pearl": "modid:item/pearl"
+  },
+  "elements": [
+    {
+      "comment": "Bottom shell",
+      "from": [2, 0, 2],
+      "to": [14, 4, 14],
+      "faces": {
+        "down": { "texture": "#bottom", "cullface": "down" },
+        "up": { "texture": "#inside" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" },
+        "west": { "texture": "#side" },
+        "east": { "texture": "#side" }
+      }
+    },
+    {
+      "comment": "Top shell (open - rotated back)",
+      "from": [2, 2, 12],
+      "to": [14, 6, 16],
+      "rotation": { "origin": [8, 4, 14], "axis": "x", "angle": -45 },
+      "faces": {
+        "down": { "texture": "#inside" },
+        "up": { "texture": "#top" },
+        "north": { "texture": "#inside" },
+        "south": { "texture": "#side" },
+        "west": { "texture": "#side" },
+        "east": { "texture": "#side" }
+      }
+    },
+    {
+      "comment": "Pearl (visible when open)",
+      "from": [7, 1, 7],
+      "to": [9, 3, 9],
+      "faces": {
+        "down": { "texture": "#pearl" },
+        "up": { "texture": "#pearl" },
+        "north": { "texture": "#pearl" },
+        "south": { "texture": "#pearl" },
+        "west": { "texture": "#pearl" },
+        "east": { "texture": "#pearl" }
+      }
+    }
+  ]
+}

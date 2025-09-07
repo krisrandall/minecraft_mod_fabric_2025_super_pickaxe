@@ -3,7 +3,13 @@ package com.example;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.EnchantingContext;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
@@ -12,6 +18,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +67,30 @@ public class ExampleMod implements ModInitializer {
     public static final Item PEARL = register("pearl", Pearl::new,
         new Item.Settings()     
     );
+    
+    // ===== NEW CLAM SHELL ADDITIONS START HERE =====
+    
+    // Clam Shell Block
+    public static final Block CLAM_SHELL_BLOCK = new ClamShellBlock(
+        FabricBlockSettings.create()
+            .strength(2.0f, 3.0f)
+            .sounds(BlockSoundGroup.STONE)
+            .nonOpaque()
+    );
+    
+    // Clam Shell Block Item
+    public static final BlockItem CLAM_SHELL_ITEM = new BlockItem(
+        CLAM_SHELL_BLOCK,
+        new Item.Settings()
+    );
+    
+    // Block Entity Type
+    public static BlockEntityType<ClamShellBlockEntity> CLAM_SHELL_BLOCK_ENTITY;
+    
+    // Screen Handler Type
+    public static ScreenHandlerType<ClamShellBlockEntity.ClamShellScreenHandler> CLAM_SHELL_SCREEN_HANDLER;
+    
+    // ===== NEW CLAM SHELL ADDITIONS END HERE =====
 
     @Override
     public void onInitialize() {
@@ -71,6 +103,38 @@ public class ExampleMod implements ModInitializer {
             content.add(SUPER_PICKAXE);
             content.add(PEARL);
         });
+        
+        // ===== NEW CLAM SHELL REGISTRATIONS START HERE =====
+        
+        // Register Clam Shell Block and Item
+        Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "clam_shell"), CLAM_SHELL_BLOCK);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "clam_shell"), CLAM_SHELL_ITEM);
+        
+        // Register Block Entity
+        CLAM_SHELL_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            new Identifier(MOD_ID, "clam_shell_entity"),
+            FabricBlockEntityTypeBuilder.create(ClamShellBlockEntity::new, CLAM_SHELL_BLOCK).build()
+        );
+        
+        // Register Screen Handler
+        CLAM_SHELL_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(
+            new Identifier(MOD_ID, "clam_shell"),
+            ClamShellBlockEntity.ClamShellScreenHandler::new
+        );
+        
+        // Add clam shell to creative inventory (Building Blocks tab)
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(content -> {
+            content.add(CLAM_SHELL_ITEM);
+        });
+        
+        // Register world generation for clam shells
+        // Note: World generation in 1.21.8 requires more setup - commenting out for now
+        // ClamShellWorldGen.registerWorldGen();
+        
+        LOGGER.info("Clam Shell block registered!");
+        
+        // ===== NEW CLAM SHELL REGISTRATIONS END HERE =====
         
         LOGGER.info("Super pickaxe registered!");
         LOGGER.info("{} has been initialized!", MOD_ID);
