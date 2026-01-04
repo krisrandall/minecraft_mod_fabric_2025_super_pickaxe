@@ -69,6 +69,9 @@ public class ExampleMod implements ModInitializer {
         // Add the item to the creative inventory (Tools tab)
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
             content.add(SUPER_PICKAXE);
+        });
+        
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
             content.add(PEARL);
         });
         

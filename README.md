@@ -23,7 +23,7 @@ A pickaxe with 100x the strength of Diamond
 * Highly enchantable
 * No repair ingredient needed
 
-Made for Minecraft 1.21.8.
+Made for Minecraft 1.21.11.
 
 ----
 
